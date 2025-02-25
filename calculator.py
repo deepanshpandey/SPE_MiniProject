@@ -10,13 +10,13 @@ def factorial(n):
         raise ValueError("Cannot compute factorial of a negative number")
     return math.factorial(n)
 
-def power(x, b):
-    return x ** b
-
 def natural_log(x):
     if x <= 0:
         raise ValueError("Cannot compute natural logarithm of non-positive number")
     return math.log(x)
+
+def power(x, b):
+    return x ** b
 
 def main():
     options = {
