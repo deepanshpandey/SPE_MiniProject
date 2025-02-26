@@ -1,12 +1,12 @@
 ---
 - name: Pull Docker Image from Docker Hub
   hosts: localhost
-  remote_user: deepanshpandey
+  remote_user: coffeeinacafe
   become: false
   tasks:
     - name: Pull Docker Image
       docker_image:
-        name: "deepanshpandey/calpy"
+        name: "coffeeinacafe/calpy"
         source: pull
       register: docker_pull_result
 
@@ -24,4 +24,4 @@
         state: started
         
     - name: Running container
-      shell: docker run -it -d --name calpy deepanshpandey/calpy
+      shell: docker run -it -d --name calpy coffeeinacafe/calpy
