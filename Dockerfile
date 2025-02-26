@@ -1,10 +1,10 @@
-FROM ubuntu:latest
+FROM python:3.11-slim
 
-RUN apt-get update \
-    && apt-get install -y python3 python3-pip \
-    && rm -rf /var/lib/apt/lists/*
+# Set working directory
+WORKDIR /app
 
-COPY calculator.py /app/calculator.py
-COPY caltest.py /app/caltest.py
+# Copy application files
+COPY calculator.py caltest.py
 
-CMD ["python3",  "calculator.py"]
+# Default command to run the application
+CMD ["python3", "calculator.py"]
