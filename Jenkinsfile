@@ -45,8 +45,8 @@ pipeline {
             steps {
                 script{
                     docker.withRegistry('', 'DockerHubCred') {
-                    sh 'docker tag calpy deepanshpandey/calpy:latest'
-                    sh 'docker push deepanshpandey/calpy'
+                    sh 'docker tag calpy coffeeinacafe/calpy:latest'
+                    sh 'docker push coffeeinacafe/calpy'
                     }
                 }
             }
