@@ -1,17 +1,10 @@
 ---
 - name: Deploy Python Calculator
   hosts: localhost
-  become: yes  # Ensures sudo is used for Docker commands
+  become: false
   environment:
-    DOCKER_HOST: "unix:///var/run/docker.sock"  # Ensure Ansible connects to Docker correctly
+    DOCKER_HOST: "unix:///var/run/docker.sock"
   tasks:
-  
-    - name: Install required Python libraries for Docker
-      pip:
-        name:
-          - docker
-          - docker-compose
-        state: present
 
     - name: Pull the latest Docker image
       community.docker.docker_image:
@@ -40,4 +33,4 @@
         image: coffeeinacafe/calpy
         state: started
         restart_policy: always
-        detach: yes  # Runs the container in the background
+        detach: yes
