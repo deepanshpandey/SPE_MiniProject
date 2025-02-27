@@ -1,2 +1,1 @@
-[local]
-localhost ansible_connection=local
+ansible_host=localhost ansible_user=Deepansh ansible_ssh_pass=Deepansh ansible_ssh_common_args = '-o StrictHostKeyChecking=no'
