@@ -7,4 +7,4 @@ WORKDIR /app
 COPY calculator.py caltest.py
 
 # Default command to run the application
-CMD ["python3", "calculator.py"]
+CMD ["python3", "/app/calculator.py"]
