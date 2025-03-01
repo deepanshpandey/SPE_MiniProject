@@ -52,6 +52,13 @@ pipeline {
             }
         }
 
+    stage('execute shell command') {
+            steps {
+                script {
+                    sh 'ansible-galaxy collection install --force  community.docker'
+                }
+            }
+        }
     stage('Run Ansible Playbook') {
             steps {
                 script {
