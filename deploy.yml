@@ -1,14 +1,15 @@
 ---
 - name: Deploy Python Calculator
   hosts: localhost
+  remote_user: deepanshpandey
   become: false
   environment:
     DOCKER_HOST: "unix:///var/run/docker.sock"
   tasks:
 
     - name: Pull the latest Docker image
-      community.docker.docker_image:
-        name: "coffeeinacafe/calpy"
+      community.general.docker_image:
+        name: coffeeinacafe/calpy
         source: pull
       register: docker_pull_result
 
@@ -17,20 +18,11 @@
         var: docker_pull_result
 
     - name: Stop and remove existing container if running
-      community.docker.docker_container:
-        name: calpy
-        state: absent
+      shell: docker stop calpy && docker rm calpy
 
-    - name: Ensure Docker is running
+    - name: Start Docker service
       service:
         name: docker
         state: started
-        enabled: yes
-
-    - name: Start a new Docker container
-      community.docker.docker_container:
-        name: calpy
-        image: coffeeinacafe/calpy
-        state: started
-        restart_policy: always
-        detach: yes
+    - name: Running container
+      shell: docker run -it -d --name calpy coffeeinacafe/calpy
