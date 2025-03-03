@@ -24,6 +24,7 @@ pipeline {
                 }
             }
         }
+
         stage('Run Tests') {
             steps {
                 script {
@@ -59,7 +60,7 @@ pipeline {
     //             }
     //         }
     //     }
-    
+
     stage('Run Ansible Playbook') {
             steps {
                 script {
